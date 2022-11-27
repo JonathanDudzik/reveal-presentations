@@ -1,0 +1,174 @@
+:root {
+  /*
+    by defining the sizes of toolbar in a var,
+    can do calcuations with them later
+  */
+  --toolbar-height: 64px;
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: var(--toolbar-height) auto;
+  grid-template-areas: 
+    "toolbar"
+    "main";
+}
+
+.layoutToolbar {
+  grid-area: toolbar;
+  z-index: 3;
+}
+
+.layoutMain {
+  grid-area: main;
+  position: relative;
+  top: calc(-1 * var(--toolbar-height));
+  min-height: calc(100vh - var(--toolbar-height));
+}
+
+.ghostbar {
+  height: 100%;
+  padding-left: 3%;
+  background-color: transparent;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ghostbarImg {
+  height: 80%;
+  max-width: 100%;
+}
+
+.ghostbarLinks {
+  display: flex;
+  flex-direction: row;
+  margin-right: 4%;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 70vh;
+}
+
+.heroBackground {
+  background: linear-gradient(145deg,#0d47a1,#42a5f5);
+  position: absolute;
+  width: 100%;
+  min-height: 480px;
+  height: 80vh;
+  max-height: 560px;
+  box-sizing: border-box;
+  transform: skewY(8deg);
+  transform-origin: 100%;
+}
+
+.heroForeground {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  background: transparent;
+  z-index: 2;
+}
+
+.heroImage {
+  height: 65vh;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  transform: rotate(-8deg);
+}
+
+.heroText {
+  width: 50%;
+  position: relative;
+  top: 25%;
+  left: 35%;
+}
+
+.heroText h1 {
+  font-size: xx-large;
+  width: 80%;
+  color: #fff;
+}
+
+.avatarContainer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 60vh;
+  align-items: center;
+  justify-items: center;
+}
+
+.avatarDiv1 {
+  height: 100%;
+}
+
+.avatarDiv2 {
+  justify-self: start;
+  padding-right: 10%;
+}
+
+.avatarDiv2 p {
+  font-size: x-large;
+}
+
+.avatarImage {
+  height: 100%;
+}
+
+.madeWithDescription {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10%
+}
+
+.madeWithGrid {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr 6fr;
+  grid-auto-rows: minmax(20vh, auto);
+  align-items: center;
+  padding: 0px 3%
+}
+
+@media (max-width: 900px) {
+  .heroImage {
+    height: 45vh;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    transform: rotate(-8deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .heroImage {
+    /* height: 45vh;
+    top: 120px; */
+    display: none;
+  }
+
+  .heroText {
+    width: 150%;
+    position: relative;
+    top: 25%;
+    left: 50%;
+  }
+
+  .avatarDiv1 {
+    height: 50%;
+  }
+
+  .avatarDiv2 h2 {
+    font-size: large;
+  }
+
+  .avatarDiv2 p {
+    font-size: small;
+  }
+}

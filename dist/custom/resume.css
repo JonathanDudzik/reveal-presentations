@@ -1,0 +1,89 @@
+:root {
+  /*
+    by defining the sizes of toolbar and side menu in a var,
+    can do calculations with them later
+  */
+  --toolbar-height: 64px;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: var(--toolbar-height) auto;
+  grid-template-areas: "toolbar" "main";
+}
+
+.aboutToolbar {
+  grid-area: toolbar;
+}
+
+.aboutMain {
+  grid-area: main;
+  min-height: calc(100vh - var(--toolbar-height));
+}
+
+.toolbar {
+  position: relative;
+  height: 100%;
+  background-color: #1976d2;
+  color: #fff;
+  padding-left: 3%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toolbarImg {
+  height: 80%;
+  max-width: 100%;
+}
+
+.toolbarLinks {
+  display: flex;
+  flex-direction: row;
+  margin-right: 4%;
+}
+
+.resumeGrid {
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-template-rows: 1fr;
+  column-gap: 20px;
+  width: 100%;
+}
+
+.leftGrid {
+  display: flex;
+  flex-direction: column;
+  background-color: #ECF0F3;
+  padding-bottom: 5%;
+}
+
+.contact {
+  padding-left: 10px;
+}
+
+.skillsList {
+  padding-left: 10px;
+}
+
+.educationList {
+  padding-left: 10px;
+}
+
+.header {
+  color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+  padding-left: 10px;
+  margin-right: 40px;
+  background: linear-gradient(145deg, #0d47a1, #42a5f5);
+}
+
+.rightFlex {
+  display: flex;
+  flex-direction: column;
+  margin-top: 26.56px;
+  padding-bottom: 5%;
+}

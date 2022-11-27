@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="../../dist/reset.css">
+	<link rel="stylesheet" href="../../dist/reveal.css">
+	<link rel="stylesheet" href="../../dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- <section><section><p>default HTML stuff</p></section></section> -->
+			<section>
+				<section>
+					<!-- a new fragement class will create a NEW fragment apart from the highlighting. -->
+					<p>default HTML stuff</p>
+
+					<!-- control the source and playback of the audio with JavaScript and the two fragment events -->
+					<audio data-autoplay controls src="../../assets/Code-1.mp3">
+						<a href="../../assets/Code-1.mp3">
+							Download audio
+						</a>
+					</audio>
+
+					<!-- this creates three independent fragements: they cannot be aligned with any of elements with the fragment class -->
+					<pre id="code-fragments-container"><code data-trim data-line-numbers="6|3|8-10">
+								<table>
+									<tr>
+										<td>Apples</td>
+										<td>$1</td>
+										<td>7</td>
+									</tr>
+									<tr>
+										<td>Oranges</td>
+										<td>$2</td>
+										<td>18</td>
+									</tr>
+								</table>
+								<table>
+									<tr>
+										<td>Apples</td>
+										<td>$1</td>
+										<td>7</td>
+									</tr>
+									<tr>
+										<td>Oranges</td>
+										<td>$2</td>
+										<td>18</td>
+									</tr>
+								</table>
+							</code></pre>
+				</section>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/notes/notes.js"></script>
+	<script src="../../plugin/markdown/markdown.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+	<script>
+		Reveal.on('ready', event => {
+			// default is important for when ready event is not fired on this slide.
+			// this code is ONLY run on initial load
+			// -1 if we are not down into at least one fragment.
+			// so -1 would equal the default values
+			// anything other that -1 should be evaluated
+			// the chained command to get the value of data-fragment is different for this ready event and the fragment events
+			if(!event.currentSlide.attributes["data-fragment"] || event.currentSlide.attributes["data-fragment"].value == "-1") {
+				// you are either on a slide that does not have fragements or had refreshed on the first page of a fragmented slide and not technically on a fragment yet
+				// do nothing expect default stuff
+				// audio will not play because their has not been any previous user interaction on the page
+				return
+			} else {
+				console.log(Array.from(event.currentSlide.children["code-fragments-container"].childNodes).find(element => element.classList.contains("current-fragment")).attributes["data-line-numbers"].value)
+			}
+		});
+		Reveal.on('fragmentshown', event => {
+			console.log(event.fragment.attributes["data-line-numbers"].value)
+		});
+		Reveal.on('fragmenthidden', event => {
+			console.log(event.fragment.previousSibling.attributes["data-line-numbers"].value)
+		});
+		function controlAudio(dataFragmentValue) {
+			switch (dataFragmentValue) {
+				// this needs to be done by the linenumbers that are highlighted
+				case "-1":
+					return "code -1";
+				case "0":
+					return "code 0";
+				case "1":
+					return "code 1";
+				default:
+					return "default"
+			}
+		}
+	</script>
+</body>
+
+</html>
