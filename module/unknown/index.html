@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="../../dist/reset.css">
+	<link rel="stylesheet" href="../../dist/reveal.css">
+	<link rel="stylesheet" href="../../dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section id="one">
+				<h1>Static title</h1>
+				<p>one</p>
+			</section>
+			<section id="two">
+				<h2>Static title</h2>
+
+				<!-- control the source and playback of the audio with JavaScript and the two fragment events -->
+				<audio id="twoAudio" data-autoplay controls>
+					<source src="../../assets/slide-audio/two_6.mp3">
+					<a href="../../assets/two_6.mp3">
+						Download audio
+					</a>
+				</audio>
+
+				<!-- this creates three independent fragments: they cannot be aligned with any of elements with the fragment class -->
+				<pre><code class="r-frame" data-trim data-line-numbers="6|3|8-10">
+						<table>
+							<!-- link for more info: google.com -->
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Oranges</td>
+								<td>$2</td>
+								<td>18</td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Oranges</td>
+								<td>$2</td>
+								<td>18</td>
+							</tr>
+						</table>
+					</code></pre>
+			</section>
+			<section id="three">
+				<h2>Static title</h2>
+
+				<!-- control the source and playback of the audio with JavaScript and the two fragment events -->
+				<audio id="threeAudio" data-autoplay controls>
+					<source src="../../assets/slide-audio/three_6.mp3">
+					<a href="../../assets/three_6.mp3">
+						Download audio
+					</a>
+				</audio>
+
+				<!-- this creates three independent fragments: they cannot be aligned with any of elements with the fragment class -->
+				<pre><code class="r-frame" data-trim data-line-numbers="6|3|8-10">
+						<table>
+							<!-- link for more info: google.com -->
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Oranges</td>
+								<td>$2</td>
+								<td>18</td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Oranges</td>
+								<td>$2</td>
+								<td>18</td>
+							</tr>
+						</table>
+					</code></pre>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/notes/notes.js"></script>
+	<script src="../../plugin/markdown/markdown.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+			progress: true
+		});
+	</script>
+	<script>
+		let currentSectionName
+		let currentAudio
+		Reveal.on('slidechanged', event => {
+			currentSectionName = event.currentSlide.id
+			currentAudio = document.getElementById(`${currentSectionName}Audio`)
+		});
+		Reveal.on('fragmentshown', event => {
+			fragmentId = currentSectionName + "_" + event.fragment.attributes["data-line-numbers"].value
+			fragmentChangeHandler(fragmentId)
+		});
+		Reveal.on('fragmenthidden', event => {
+			fragmentId = currentSectionName + "_" + event.fragment.previousSibling.attributes["data-line-numbers"].value
+			fragmentChangeHandler(fragmentId)
+		});
+		function fragmentChangeHandler(fragmentId) {
+			currentAudio.src = `../../assets/slide-audio/${fragmentId}.mp3`
+			currentAudio.load()
+			currentAudio.play()
+		}
+	</script>
+</body>
+
+</html>
