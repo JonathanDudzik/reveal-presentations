@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="../../dist/reset.css">
+	<link rel="stylesheet" href="../../dist/reveal.css">
+	<link rel="stylesheet" href="../../dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section id="title">
+				<!-- this h1 is important for required autoplay interaction -->
+				<h1>Go SDK</h1>
+				<h2>Up and Running with Azure</h2>
+			</section>
+			<section id="resources">
+				<h1>Explore Course Resources</h1>
+				<!-- <a href="https://github.com/JonathanDudzik/azure-architecture-go-sdk">
+					<p>Course GitHub Repository</p>
+				</a>
+				<a href="../../assets/Greensock.png">
+					<p>Course Transcript (coming soon)</p>
+				</a>
+				<a href="https://learn.microsoft.com/en-us/azure/developer/go/overview">
+					<p>SDK Docs</p>
+				</a>
+				<a href="https://pkg.go.dev/github.com/Azure/azure-sdk-for-go">
+					<p>SDK Reference</p>
+				</a> -->
+				<video src="../../assets/slide-audio/resources_video-0.mp4" data-autoplay controls></video>
+			</section>
+			<section id="intro">
+				<section>
+					<h2>Understand the Azure SDK</h2>
+				</section>
+				<section>
+					<p>The Azure SDK for Go provides several libraries to communicate with and programmatically manage Azure services.
+					</p>
+					<p>The SDK is built on top of the Azure REST API. This hierarchy allows you to access the functionality of the Azure
+						REST API directly from your Go programs.</p>
+					<audio id="threeAudio" data-autoplay controls>
+						<source src="../../assets/slide-audio/intro_0.mp3">
+						<a href="../../assets/slide-audio/intro_0.mp3">
+							Download audio
+						</a>
+					</audio>
+				</section>
+				<section>
+					<p>So if you want to interact with Azure services through a server built in Go or an executable Go program running
+						on a physical or virtual machine, the Azure GO SDK makes it possible.</p>
+					<audio id="threeAudio" data-autoplay controls>
+						<source src="../../assets/slide-audio/intro_1.mp3">
+						<a href="../../assets/slide-audio/intro_1.mp3">
+							Download audio
+						</a>
+					</audio>
+				</section>
+				<section>
+					<p>In this course, I will walk you through my own implementation of the SDK that does the following:</p>
+					<ol>
+						<li>Authenticates a user;</li>
+						<li>Creates an instance of a http client for making requests;</li>
+						<li>Creates a resource group;</li>
+						<li>And deploys an Azure Resource Management, or ARM template</li>
+					</ol>
+					<audio id="threeAudio" data-autoplay controls>
+						<source src="../../assets/slide-audio/intro_2.mp3">
+						<a href="../../assets/slide-audio/intro_2.mp3">
+							Download audio
+						</a>
+					</audio>
+				</section>
+				<section>
+					<p>Before we actually get into working with the SDK, I want to mention some alternatives to using the GO SDK and
+						provide general guidance for setting up a local development environment.
+					</p>
+					<audio id="threeAudio" data-autoplay controls>
+						<source src="../../assets/slide-audio/intro_0.mp3">
+						<a href="../../assets/slide-audio/intro_0.mp3">
+							Download audio
+						</a>
+					</audio>
+				</section>
+			</section>
+			<section id="alternatives">
+				<section>
+					<h2>Understand alternatives to the SDK</h2>
+				</section>
+				<section>
+						<p>The SDK is built on top of the Azure REST API</p>
+						<p>Go servers and executables</p>
+						<ol>
+							<li>Authenticate a user</li>
+							<li>Create http client</li>
+							<li>Create resource group</li>
+							<li>Deploy ARM template</li>
+						</ol>
+						<audio id="threeAudio" data-autoplay controls>
+							<source src="../../assets/slide-audio/intro_0.mp3">
+							<a href="../../assets/slide-audio/intro_0.mp3">
+								Download audio
+							</a>
+						</audio>
+				</section>
+				<section>
+						<p>The SDK is built on top of the Azure REST API</p>
+						<p>Go servers and executables</p>
+						<ol>
+							<li>Authenticate a user</li>
+							<li>Create http client</li>
+							<li>Create resource group</li>
+							<li>Deploy ARM template</li>
+						</ol>
+						<audio id="threeAudio" data-autoplay controls>
+							<source src="../../assets/slide-audio/intro_0.mp3">
+							<a href="../../assets/slide-audio/intro_0.mp3">
+								Download audio
+							</a>
+						</audio>
+				</section>
+				<section>
+						<p>The SDK is built on top of the Azure REST API</p>
+						<p>Go servers and executables</p>
+						<ol>
+							<li>Authenticate a user</li>
+							<li>Create http client</li>
+							<li>Create resource group</li>
+							<li>Deploy ARM template</li>
+						</ol>
+						<audio id="threeAudio" data-autoplay controls>
+							<source src="../../assets/slide-audio/intro_0.mp3">
+							<a href="../../assets/slide-audio/intro_0.mp3">
+								Download audio
+							</a>
+						</audio>
+				</section>
+			</section>
+			<section id="setup">
+				<section>
+					<h2>Setup Local Environment</h2>
+					<p>click on your operating system</p>
+
+					<div style="display: flex; justify-content: center; max-height: 250px;">
+						<a href="#/mac"><img src="../../assets/mac-logo.png" alt=""></a>
+						<a href="#/win"><img src="../../assets/windows-logo.png" alt=""></a>
+						<a href="#/linux"><img src="../../assets/linux-logo.png" alt=""></a>
+					</div>
+					<br>
+					<audio id="threeAudio" data-autoplay controls>
+						<source src="../../assets/slide-audio/azure-go-sdk-03.mp3">
+						<a href="../../assets/slide-audio/azure-go-sdk-03.mp3">
+							Download audio
+						</a>
+					</audio>
+				</section>
+				<section id="mac">
+					<p>Informational links for Mac</p>
+					<a href="https://support.apple.com/guide/terminal/welcome/mac">Terminal</a> |
+					<a href="https://code.visualstudio.com/docs/?dv=osx">Text Editor</a> |
+					<a href="https://go.dev/doc/install">Go Language</a> |
+					<a href="https://azure.microsoft.com/en-ca/free/">Azure Account</a>
+				</section>
+				<section id="win">
+					<p>Informational links for Windows</p>
+					<a href="https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.2">Terminal</a> |
+					<a href="https://code.visualstudio.com/docs/?dv=win">Text Editor</a> |
+					<a href="https://go.dev/doc/install">Go Language</a> |
+					<a href="https://azure.microsoft.com/en-ca/free/">Azure Account</a>
+				</section>
+				<section id="linux">
+					<p>Informational links for Linux</p>
+					<a href="https://tabby.sh/">Terminal</a> |
+					<a href="https://code.visualstudio.com/Download">Text Editor</a> |
+					<a href="https://go.dev/doc/install">Go Language</a> |
+					<a href="https://azure.microsoft.com/en-ca/free/">Azure Account</a>
+				</section>
+			</section>
+			<section id="auth">
+				<section>
+					<h2 >Use azidentity for local dev authentication</h2>
+				</section>
+				<section>
+						<p>
+							You can find technical documentation for azidentity on the SDK reference site. Here is a direct link for convenience: https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/azidentity
+						</p>
+				</section>
+				<section>
+						<p>
+							Other paragraph with audio
+						</p>
+						<audio id="twoAudio" data-autoplay controls>
+							<source src="../../assets/slide-audio/two_6.mp3">
+							<a href="../../assets/two_6.mp3">
+								Download audio
+							</a>
+						</audio>
+				</section>
+			</section>
+			<section>
+				<section id="auth-code">
+					<pre>
+						<code class="r-frame" data-trim data-line-numbers="6|3|8-10">
+								<table>
+									<!-- link for more info: google.com -->
+									<tr>
+										<td>Apples</td>
+										<td>$1</td>
+										<td>7</td>
+									</tr>
+									<tr>
+										<td>Apples</td>
+										<td>$1</td>
+										<td>7</td>
+									</tr>
+									<tr>
+										<td>Apples</td>
+										<td>$1</td>
+										<td>7</td>
+									</tr>
+									<tr>
+										<td>Oranges</td>
+										<td>$2</td>
+										<td>18</td>
+									</tr>
+								</table>
+								<table>
+									<tr>
+										<td>Apples</td>
+										<td>$1</td>
+										<td>7</td>
+									</tr>
+									<tr>
+										<td>Oranges</td>
+										<td>$2</td>
+										<td>18</td>
+									</tr>
+								</table>
+						</code>
+					</pre>
+				</section>
+				<audio id="auth-codeAudio" data-autoplay controls>
+					<source src="../../assets/slide-audio/two_6.mp3">
+					<a href="../../assets/two_6.mp3">
+						Download audio
+					</a>
+				</audio>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			plugins: [RevealHighlight],
+			progress: true,
+		});
+	</script>
+	<script>
+		let currentSectionName
+		let currentAudio
+		Reveal.on('slidechanged', event => {
+			currentSectionName = event.currentSlide.id
+			currentAudio = document.getElementById(`${currentSectionName}Audio`)
+		});
+		Reveal.on('fragmentshown', event => {
+			if (codeLineHighlights = event.fragment.attributes["data-line-numbers"]?.value) {
+				fragmentId = currentSectionName + "_" + codeLineHighlights
+				fragmentChangeHandler(fragmentId)
+			}
+		});
+		Reveal.on('fragmenthidden', event => {
+			if (codeLineHighlights = event.fragment.previousSibling.attributes["data-line-numbers"]?.value) {
+				fragmentId = currentSectionName + "_" + codeLineHighlights
+				fragmentChangeHandler(fragmentId)
+			}
+		});
+		function fragmentChangeHandler(fragmentId) {
+			currentAudio.src = `../../assets/slide-audio/${fragmentId}.mp3`
+			currentAudio.load()
+			currentAudio.play()
+		}
+	</script>
+</body>
+
+</html>
